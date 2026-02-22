@@ -2,7 +2,7 @@
 name = "zune-hdr"
 version = "0.5.2"
 rust-version = "1.77.0"
-edition = "2021"
+edition = "2024"
 description = "Radiance/HDR image decoder and encoder"
 exclude = ["fuzz/"]
 homepage = "https://github.com/etemesi254/zune-image/tree/dev/crates/zune-hdr"
