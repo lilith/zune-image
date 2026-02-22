@@ -25,7 +25,7 @@ pub enum PPMEncodeErrors {
 impl Debug for PPMEncodeErrors {
     fn fmt(&self, f: &mut Formatter<'_>) -> core::fmt::Result {
         match self {
-            PPMEncodeErrors::Static(ref errors) => {
+            PPMEncodeErrors::Static(errors) => {
                 writeln!(f, "{errors}")
             }
             PPMEncodeErrors::TooShortInput(expected, found) => {

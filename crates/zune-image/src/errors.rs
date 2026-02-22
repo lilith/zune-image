@@ -90,9 +90,9 @@ impl Debug for ImageErrors {
             }
             Self::NoImageBuffer => writeln!(f, "No image buffer present"),
 
-            Self::OperationsError(ref error) => writeln!(f, "{error:?}"),
+            Self::OperationsError(error) => writeln!(f, "{error:?}"),
 
-            Self::EncodeErrors(ref err) => writeln!(f, "{err:?}"),
+            Self::EncodeErrors(err) => writeln!(f, "{err:?}"),
             ImageErrors::UnsupportedColorspace(present, operation, supported) => {
                 writeln!(f, "Unsupported colorspace {present:?}, for the operation {operation}\nSupported colorspaces are {supported:?}")
             }
@@ -173,7 +173,7 @@ impl Debug for ImageOperationsErrors {
             Self::GenericString(err) => {
                 writeln!(f, "{err}")
             }
-            Self::WrongColorspace(ref expected, ref found) => {
+            Self::WrongColorspace(expected, found) => {
                 writeln!(f, "Expected {expected:?} colorspace but found {found:?}")
             }
             Self::WrongComponents(expected, found) => {
@@ -209,9 +209,9 @@ impl From<ZByteIoError> for ImageErrors {
 impl Debug for ImgEncodeErrors {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::Generic(ref string) => writeln!(f, "{string}"),
-            Self::GenericStatic(ref string) => writeln!(f, "{string}"),
-            Self::UnsupportedColorspace(ref found, ref expected) => {
+            Self::Generic(string) => writeln!(f, "{string}"),
+            Self::GenericStatic(string) => writeln!(f, "{string}"),
+            Self::UnsupportedColorspace(found, expected) => {
                 writeln!(
                     f,
                     "Found colorspace {found:?} but the encoder supports {expected:?}"
